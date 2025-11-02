@@ -1,0 +1,46 @@
+ <table class="table">
+                    <thead>
+                        <tr>
+                            <th>«·«”„ «·ﬂ«„·</th>
+                            <th>—ﬁ„ «·ÂÊÌ…</th>
+                            <th>—ﬁ„ «·Â« ›</th>
+                            <th>«·⁄‰Ê«‰</th>
+                            <th>⁄œœ «·ﬁ÷«Ì«</th>
+                            <th>«·≈Ã—«¡« </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                        <?php foreach ($litigants as $litigant): ?>
+                        <tr>
+                            <td>
+                                <strong style="color: #667eea;">
+                                    <?php echo htmlspecialchars($litigant['full_name']); ?>
+                                </strong>
+                            </td>
+                            <td><?php echo htmlspecialchars($litigant['id_number']); ?></td>
+                            <td><?php echo htmlspecialchars(isset($litigant['phone_number']) ? $litigant['phone_number'] : '€Ì— „Õœœ'); ?></td>
+                            <td><?php echo htmlspecialchars(isset($litigant['address']) ? $litigant['address'] : '€Ì— „Õœœ'); ?></td>
+                            <td>
+                                <span style="background: rgba(39, 174, 96, 0.1); color: #27ae60; padding: 3px 8px; border-radius: 10px; font-size: 12px;">
+                                    <?php echo $litigant['total_cases']; ?> ﬁ÷Ì…
+                                </span>
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                    <a href="manage_litigants.php?action=edit&id=<?php echo $litigant['litigant_id']; ?>" 
+                                       class="btn btn-primary" 
+                                       style="padding: 5px 10px; font-size: 12px;">
+                                        <i class="fas fa-edit"></i>  ⁄œÌ·
+                                    </a>
+                                    <button onclick="deleteLitigant(<?php echo $litigant['litigant_id']; ?>, '<?php echo htmlspecialchars($litigant['full_name']); ?>')" 
+                                            class="btn btn-danger" 
+                                            style="padding: 5px 10px; font-size: 12px;">
+                                        <i class="fas fa-trash"></i> Õ–›
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
